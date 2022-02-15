@@ -1,53 +1,120 @@
 #include<iostream>
+#include<iomanip>
 using namespace std;
 int main()
 {
-    int n,emp_id[n];
-    double emp_wg[n],emp_hr[n],ot_wage[n],gross_pay[n],tax = 3.625,total_pay=0,avr,hour=40.00;
-    cout<<"Enter the number of Employees"<<endl;
-    cin>>n;
-    int i=0;
-    while(i<n)
+    char num;
+    float gm,odore,def;
+    cout<<"(1) Carbon monoxide"<<endl<<"(2) Hydrocarbons"<<endl<<"(3) Nitrogen oxides"<<endl<<"(4) Nonmethane Hydrocarbons"<<endl;
+    cout<<"Enter the pollutant Number"<<endl;
+    cin>>num;
+    if((num=='1') || (num=='2') || (num=='3') || (num=='4'))
+     {
+      cout<<"Enter the Number of grams emitted per mile >> ";
+      cin>>gm;
+      cout<<"Enter the odometer reading >> ";
+      cin>>odore;
+     }
+    else 
     {
-        cout<<"Enter the Employee ID"<<endl;
-        cin>>emp_id[i];
-
-        cout<<"Enter the number of hours worked "<<endl;
-        cin>>emp_hr[i];
-
-        cout<<"Enter the Hourly Wage Rate "<<endl;
-        cin>>emp_wg[i];
-        ot_wage[i] = (emp_wg[i] * 1.5);
-        i++;
+        cout<<"Wrong input";
     }
-    cout<<"Payroll of Employees"<<endl;
-    i=0;
-    while(i<n)
+
+    if(num=='1' && odore<50000)
     {
-        if(emp_hr[i]>hour)
-          gross_pay[i] = (hour * emp_wg[i]);
+        def = 3.4;
+        if(gm > def)
+        {
+            cout<<"Emissions exceed permitted level of 3.4 grams/mile";
+        }
+        else 
+        {
+            cout<<"Everything is under control";
+        }  
+    }
+    else if(num=='1' && odore > 50000)
+    {
+        def = 4.2;
+        if(gm > def)
+        {
+            cout<<"Emissions exceed permitted level of 4.2 grams/mile";
+        }
+        else 
+        {
+            cout<<"Everything is under control";
+        }
+    }
+    else if(num =='2' && odore < 50000)
+    {
+        def = 0.31;
+        if(gm > def)
+        {
+            cout<<"Emissions exceed permitted level of 0.31 grams/mile";
+        }
         else
-          gross_pay[i] = (emp_hr[i] * emp_wg[i]);
-
-
-        if(emp_hr[i]>hour)
-          gross_pay[i] = gross_pay[i] + ((emp_hr[i] - hour) * ot_wage[i]);
-
-        gross_pay[i] = gross_pay[i] - ((gross_pay[i] * tax)/100); 
-
-        total_pay = total_pay + gross_pay[i]; 
-        i++;
-
+        {
+            cout<<"Everything is under control";
+        }
     }
-    avr=total_pay/n;
-
-    for(int i=0;i<n;i++)
+    else if(num == '2' && odore > 50000)
     {
-        cout<<"Gross Pay of Employee "<<emp_id[i]<<": "<<gross_pay[i]<<endl;
-
+        def = 0.39;
+        if(gm > def)
+        {
+            cout<<"Emissions exceed permitted level of 0.39 grams/mile";
+        }
+        else
+        {
+            cout<<"everything is under control";
+        }
+    }
+    else if(num == '3' && odore < 50000)
+    {
+        def = 0.4;
+        if(gm > def)
+        {
+            cout<<"Emissions exceed permitted level of 0.4 grams/mile";
+        }
+        else 
+        {
+            cout<<"Everything is under control";
+        }  
+    }
+    else if(num == '3' && odore > 50000)
+    {
+        def = 0.5;
+        if(gm > def)
+        {
+            cout<<"Emissions exceed permitted level of 0.5 grams/mile";
+        }
+        else 
+        {
+            cout<<"Everything is Under control";
+        }
+    }
+    else if(num == '4' && odore < 50000)
+    {
+        def = 0.25;
+        if(gm > def)
+        {
+            cout<<"Emissions exceed permitted level of 0.25 grams/mile";
+        }
+        else{
+            cout<<"Everything is under control";
+        }
+    }
+    else if(num == '4' && odore > 50000)
+    {
+        def = 0.31;
+        if(gm > def)
+        {
+            cout<<"Emissions exceed permitted level of 0.31 grams/mile";
+        }
+        else 
+        {
+            cout<<"Everything is under control";
+        }
     }
 
-    cout<<"Average pay = "<<avr<<endl;
-    cout<<"total pay = "<<total_pay;
-
+        
 }

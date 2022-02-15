@@ -1,33 +1,32 @@
 #include<iostream>
-#include<limits>
 using namespace std;
 int main()
 {
-    int small,largest;
-    float total=0;
-    small=INT_MAX;
-    largest=INT_MIN;
-    int n,numb[n];
-    float aver;
-    cout<<"How many numbers are you going to enter\n";
-    cin>>n;
-    for(int i=0;i<n;i++)
+    double purchase,dis,serv,tdis,sserv;
+    char id;
+    cout<<"Enter purchased amount"<<endl;
+    cin>>purchase;
+    cout<<"Are you a Teacher (y/n)"<<endl;
+    cin>>id;
+    dis=purchase;
+    cout<<"Total purchases                "<<purchase<<endl;
+    if((id=='y')&&(purchase>=100.0))
     {
-        cout<<"Enter Number "<<i+1<<":";
-        cin>>numb[i];
-        total=total+numb[i];
-        if(numb[i]>largest)
-        {
-            largest=numb[i];
-        }
-        if(numb[i]<small)
-        {
-            small=numb[i];    
-        }
+        tdis = purchase * 0.12;
+        cout<<"Teacher's Discount (12%)       "<<tdis<<endl;
+        dis = purchase - tdis;
+        cout<<"Discounted Total               "<<dis<<endl;
     }
-    aver=total/n;
-    cout<<"Smallest number = "<<small<<endl;
-    cout<<"Largest number = "<<largest<<endl;
-    cout<<"average = "<<aver;
+    else if((id=='y')&&(purchase<100.0))
+    {
+        tdis = purchase * 0.10;
+        cout<<"Teacher's Discount (10%)       "<<tdis<<endl;
+        dis = purchase - tdis;
+        cout<<"Teacher Discounted Price      "<<dis<<endl; 
+    }
+    sserv = dis * 0.05;
+    cout<<"Sales Tax (5%)                 "<<sserv<<endl;
+    serv = dis + sserv;
+    cout<<"Total                          "<<serv;
 
 }
